@@ -53,7 +53,7 @@ You can download the NI-VISA drivers from the [NI website](https://www.ni.com/en
 6. Press Ctrl+C to stop the test at any time. 
 
 
-# Logging
+## Logging
 Test data is logged every second and saved as `HKPS_TC_testdata-{}.csv` in the C:/Data folder. The log captures the following parameters with timestamps:
 
 - HV Voltage (HV_V)
@@ -64,7 +64,7 @@ Test data is logged every second and saved as `HKPS_TC_testdata-{}.csv` in the C
 - Load 2 Current (Load2_I)
 
 
-# Troubleshooting
+## Troubleshooting
 1. Connection Issues
     - Ensure all hardware connections are correct and secure.
     - Verify that the instruments are using the correct serial port and GPIB addresses:
