@@ -7,12 +7,12 @@ For ease of use, the repository includes both the Python script (.py) for custom
 
 
 ## Features
-- Instrument communication check: Automatically verifies connectivity with the power supply and electronic loads at the start of each test.
-- User-configurable PSU settings: Allows control of input voltage, current, and power cycle timing.
-- Electronic load setup: Configures ELoad1 to 22 ohms and ELoad2 to 16 ohms, with current protection enabled.
-- 1-second data logging: Records voltage and current values from the power supply and loads.
-- Retry mechanism: Retries communication with instruments up to 3 times before aborting the test.
-- Safe shutdown: Easily stop the test and power off all instruments with CTRL+C.
+- **Instrument communication check:** Automatically verifies connectivity with the power supply and electronic loads at the start of each test.
+- **User-configurable PSU settings:** Allows control of input voltage, current, and power cycle timing.
+- **Electronic load setup:** Configures ELoad1 to 22 ohms and ELoad2 to 16 ohms, with current protection enabled.
+- **1-second data logging:** Records voltage and current values from the power supply and loads.
+- **Retry mechanism:** Retries communication with instruments up to 3 times before aborting the test.
+- **Safe shutdown:** Easily stop the test and power off all instruments with CTRL+C.
 
 
 ## Prerequisites 
@@ -33,20 +33,19 @@ You can download the NI-VISA drivers from the [NI website](https://www.ni.com/en
 
 
 ## Usage
-1. Clone this repository: 
-    git clone https://github.com/SwantikaD/SMPS-Cycling-Test-Script
+1. Download and extract `SMPS-Cycle-Tester-v1.0.0.zip` from the Releases section of this [repository](https://github.com/SwantikaD/SMPS-Cycling-Test-Script). The extracted folder will contain the executable.
 
 2. Create `Data` folder in C drive to store the test data logs. 
 
-3. Open command prompt, navigate to the repo location and run the executable:
-    cd <path/to/executable>
-    SMPSThermalCyclingScript.exe
+3. Open command prompt, navigate to the folder containing the executable and run it:
+    - cd <path/to/executable>
+    - SMPSThermalCyclingScript.exe
 
 4. Enter the settings for input HV Power Supply when prompted. See example below:
-    Enter voltage setting in volts: 400
-    Enter current setting in amps: 0.8
-    Enter power on time in sec: 900
-    Enter power off time in sec: 900
+    - Enter voltage setting in volts: 400
+    - Enter current setting in amps: 0.8
+    - Enter HV on time in sec: 900
+    - Enter HV off time in sec: 900
 
 5. The test starts automatically after configuration.
 
@@ -68,17 +67,17 @@ Test data is logged every second and saved as `HKPS_TC_testdata-{}.csv` in the C
 1. Connection Issues
     - Ensure all hardware connections are correct and secure.
     - Verify that the instruments are using the correct serial port and GPIB addresses:
-        HV PSU: ASRL6::INSTR
-        Load 1: GPIB0::2::INSTR
-        Load 2: GPIB0::1::INSTR
+        - HV PSU: ASRL6::INSTR
+        - Load 1: GPIB0::2::INSTR
+        - Load 2: GPIB0::1::INSTR
 
 2. Communication Errors
     If the script connects but fails to communicate (i.e., all 3 retry attempts fail):
     - Power cycle the instrument and rerun the script.
-    - If the issue persists, use Keysight Command Expert to reset the instrument:
+    - If the issue persists, use Keysight Command Expert (CE) to reset the instrument:
         - Install Keysight Command Expert.
         - Connect to the instrument and send a reset SCPI command.
-        - For a tutorial, watch this video: https://www.youtube.com/watch?v=nHSU6RjHCqE
+        - Watch this [tutorial](https://www.youtube.com/watch?v=nHSU6RjHCqE) to set up an instrument and send SCPI commands in CE.  
 
     
 

@@ -11,6 +11,7 @@ from datetime import datetime
 import msvcrt
 import sys
 
+#send user-specified query to HV PSU with up to 3 retries
 def query_HV_Sorenson(query):
 
     for attempt in range(3):
@@ -31,7 +32,7 @@ def query_HV_Sorenson(query):
 
     return reply
 
-
+#send user-specified query to e-load with up to 3 retries
 def query_Eload_8602(query, loadType):
 	if loadType == 'Primary':
 	    for attempt in range(3):
@@ -68,7 +69,7 @@ def query_Eload_8602(query, loadType):
 
 	return reply
 
-
+#query HV PSU voltage and current measurement and log to csv
 def datalog(logFile,time_on_off):
 
 	for i in range(int(time_on_off)):
@@ -114,6 +115,8 @@ def datalog(logFile,time_on_off):
 
 		#wait
 		time.sleep(0.3)
+
+#Test Script 
 
 #Generate csv filename
 now = datetime.now()
@@ -299,7 +302,7 @@ try:
 		     raise Exception('Secondary eload did not turn on')
 		time.sleep(1)
 
-        #Turn on 400V
+        #Turn on HV
 		inst1.write('OUTP ON')
 		time.sleep(0.5)
 		instrStatus = query_HV_Sorenson('OUTP?')
@@ -346,7 +349,7 @@ try:
 		time.sleep(1)
 		"""
 
-		#Turn off 400V
+		#Turn off HV
 		inst1.write('OUTP OFF')
 		time.sleep(0.5)
 		instrStatus = query_HV_Sorenson('OUTP?')
